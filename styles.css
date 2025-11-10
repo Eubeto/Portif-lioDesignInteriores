@@ -82,7 +82,7 @@ nav a:hover {
 /* ======== HERO ======== */
 .hero {
   background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-  height: 95vh;
+  height: 99vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,10 +122,7 @@ section {
 
 .about img {
   width: 300px;
-  height: 300px;
-  width: 300px;
-  object-fit: cover;
-  border-radius: 50%;
+  border-radius: 300px;
   box-shadow: 3px 4px 10px rgba(187, 181, 181, 0.1);
 }
 
