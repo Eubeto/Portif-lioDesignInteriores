@@ -1,0 +1,198 @@
+/* ======== BASE ======== */
+:root {
+  --bg: #faf8f4;
+  --text: #3a3a3a;
+  --accent: #b59b6a;
+  --light: #ffffff;
+}
+
+[data-theme="dark"] {
+  --bg: #1f1f1f;
+  --text: #e8e8e8;
+  --accent: #d4b26f;
+  --light: #2a2a2a;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.5s, color 0.5s;
+}
+
+header {
+  background-color: var(--light);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 100;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 0 1% ;
+  box-shadow: 1 9px 10px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+  font-weight: 950px;
+  letter-spacing: 2px;
+  margin-right: 550px;
+  
+}
+
+nav {
+  display: flex;
+  align-items: end;
+  gap: 1.2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+.lang-switch {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.lang-switch img {
+  width: 24px;
+  border-radius: 3px;
+  border: 1px solid #ccc;
+}
+
+.theme-toggle {
+  margin-left: 1rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+/* ======== HERO ======== */
+.hero {
+  background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.35);
+}
+
+.hero h2 {
+  position: relative;
+  z-index: 2;
+  font-size: 2.8rem;
+  line-height: 1.4;
+  max-width: 80%;
+  
+}
+
+section {
+  padding: 6rem 10%;
+}
+
+/* ======== SOBRE ======== */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.about img {
+  width: 300px;
+  border-radius: 16px;
+  box-shadow: 3px 4px 10px rgba(187, 181, 181, 0.1);
+}
+
+.about-text {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-text h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.about-text p {
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+/* ======== PORTFÓLIO ======== */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ======== FRASE ======== */
+.quote {
+  background-color: var(--light);
+  padding: 4rem 10%;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.3rem;
+  border-top: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* ======== FOOTER ======== */
+footer {
+  background-color: var(--light);
+  text-align: center;
+  padding: 2.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  margin: 0 0.4rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ======== RESPONSIVO ======== */
+@media (max-width: 768px) {
+  .about { flex-direction: column; text-align: center; }
+  .hero h2 { font-size: 2rem; }
+  header { flex-wrap: wrap; }
+}

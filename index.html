@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anna Kyryliyk | Interior Designer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Tailwind Play CDN (rápido para protótipo; para produção faça build) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            },
+            float: {
+              '0%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-6px)' },
+              '100%': { transform: 'translateY(0)' }
+            }
+          },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-out forwards',
+            'slide-up': 'slideUp 700ms cubic-bezier(.16,.84,.24,1) forwards',
+            'float-slow': 'float 6s ease-in-out infinite'
+          }
+        }
+      }
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    // Reveal-on-scroll using IntersectionObserver + Tailwind custom animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0');
+            entry.target.classList.add('animate-slide-up');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll('.reveal').forEach(el => {
+        el.classList.add('opacity-0');
+        observer.observe(el);
+      });
+    });
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="light">
+
+  <header class="bg-white/80 backdrop-blur-md fixed w-full top-0 left-0 z-10">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4 md:p-6">
+      <h1 class="font-semibold tracking-tight">Anna Kyryliyk</h1>
+      <nav class="flex items-center gap-4">
+      <a href="#about" data-i18n="about">Sobre</a>
+      <a href="#portfolio" data-i18n="portfolio">Portfólio</a>
+      <a href="#contact" data-i18n="contact">Contato</a>
+
+      <div class="lang-switch flex items-center gap-2">
+        <img src="https://flagcdn.com/w20/pt.png" alt="Português" onclick="changeLang('pt')">
+        <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="changeLang('en')">
+        <img src="https://flagcdn.com/w20/ua.png" alt="Українська" onclick="changeLang('ua')">
+      </div>
+
+      <span class="theme-toggle ml-3 text-xl text-amber-600 cursor-pointer" onclick="toggleTheme()">🌓</span>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h2 data-i18n="hero" class="animate-fade-in text-3xl md:text-4xl lg:text-5xl leading-tight text-center max-w-4xl mx-auto">“Design que fala com o coração, transforma espaços e inspira vidas.”</h2>
+  </div>
+
+  <section id="about" class="about">
+    <img src="images/perfil.jpg" alt="Anna Kyryliyk Portrait" class="w-72 rounded-xl shadow-lg reveal" loading="lazy">
+    <div class="about-text reveal">
+      <h3 data-i18n="aboutTitle">Sobre Anna</h3>
+      <p data-i18n="aboutText">
+        Anna Kyryliuk é uma designer de interiores ucraniana residente em Portugal, apaixonada por criar ambientes que unem beleza, serenidade e propósito.  
+        Seu estilo combina a estética natural do design europeu com a sensibilidade artística do Leste Europeu.  
+        <br><br>
+        Com experiência em projetos residenciais e comerciais, Anna acredita que cada espaço deve refletir a alma de quem o habita, traduzindo emoções, fé e identidade através da luz, textura e harmonia.
+      </p>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2 data-i18n="portfolio">Portfólio</h2>
+    <div class="gallery">
+      <img class="transition-transform duration-300 hover:scale-105 hover:shadow-2xl reveal" src="images/Kitchen concept.jpg" alt="Living room design">
+      <img class="transition-transform duration-300 hover:scale-105 hover:shadow-2xl reveal" src="images/Kitchen concept.jpg" alt="Kitchen concept">
+      <img class="transition-transform duration-300 hover:scale-105 hover:shadow-2xl reveal" src="images/Minimal bedroom.jpg" alt="Minimal bedroom">
+      <img class="transition-transform duration-300 hover:scale-105 hover:shadow-2xl reveal" src="images/Office design.jpg" alt="Office design">
+    </div>
+  </section>
+
+  <div class="quote" data-i18n="quote">
+    “Cada detalhe conta uma história cada textura, uma sensação.  
+    A minha missão é trazer paz, calor e harmonia aos espaços onde a vida acontece.”
+  </div>
+
+  <footer id="contact">
+    <p>📩 <strong data-i18n="contact">Contato:</strong> <a href="mailto:anna.kuruliyk.design@gmail.com">anna.kuruliyk.design@gmail.com</a></p>
+    <p>🌍 <a href="https://www.linkedin.com/in/anna-kyryliuk-27251238a/">LinkedIn</a></p>
+    <p>© 2025 Anna Kyryliuk</p>
+  </footer>
+
+  <script>
+    const translations = {
+      pt: {
+        about: "Sobre",
+        portfolio: "Portfólio",
+        contact: "Contato",
+        hero: "“Design que fala com o coração, transforma espaços e inspira vidas.”",
+        aboutTitle: "Sobre Anna",
+        aboutText: "Anna Kyryliuk é uma designer de interiores ucraniana residente em Portugal, apaixonada por criar ambientes que unem beleza, serenidade e propósito. Seu estilo combina a estética natural do design europeu com a sensibilidade artística do Leste Europeu. Com experiência em projetos residenciais e comerciais, Anna acredita que cada espaço deve refletir a alma de quem o habita — traduzindo emoções, fé e identidade através da luz, textura e harmonia.",
+        quote: "“Cada detalhe conta uma história cada textura, uma sensação. A minha missão é trazer paz, calor e harmonia aos espaços onde a vida acontece.”"
+      },
+      en: {
+        about: "About",
+        portfolio: "Portfolio",
+        contact: "Contact",
+        hero: "“Design that speaks to the heart, transforms spaces and inspires lives.”",
+        aboutTitle: "About Anna",
+        aboutText: "Anna Kyryliuk is a Ukrainian interior designer based in Portugal, passionate about creating environments that unite beauty, serenity, and purpose. Her style blends the natural aesthetics of European design with Eastern artistic sensitivity. With experience in residential and commercial projects, Anna believes every space should reflect the soul of its inhabitants — translating emotions, faith, and identity through light, texture, and harmony.",
+  quote: "“Every detail tells a story each texture, a feeling. My mission is to bring peace, warmth, and harmony into the spaces where life happens.”"
+      },
+      ua: {
+        about: "Про мене",
+        portfolio: "Портфоліо",
+        contact: "Контакт",
+        hero: "«Дизайн, що говорить серцем, перетворює простір і надихає життя.»",
+        aboutTitle: "Про Анну",
+        aboutText: "Анна Курулійк — українська дизайнерка інтер’єрів, яка проживає в Португалії. Вона створює простори, що поєднують красу, спокій і сенс. Її стиль — це гармонійне поєднання європейської естетики з художньою чутливістю Сходу. Анна вірить, що кожен простір повинен відображати душу його мешканців — передаючи емоції, віру та ідентичність через світло, текстуру та гармонію.",
+        quote: "«Кожна деталь розповідає історію кожна текстура викликає почуття. Моя місія — приносити мир, тепло та гармонію у простори, де відбувається життя.»"
+      }
+    };
+
+    function changeLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.innerText = translations[lang][key];
+      });
+    }
+
+    function toggleTheme() {
+      const body = document.body;
+      const theme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      body.setAttribute('data-theme', theme);
+    }
+  </script>
+
+</body>
+</html>
