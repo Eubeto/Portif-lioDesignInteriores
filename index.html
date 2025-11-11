@@ -5,39 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anna Kyryliyk | Interior Designer</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <!-- Tailwind Play CDN (rápido para protótipo; para produção faça build) -->
+  <!-- Animations and reveal script (no Tailwind) -->
   <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          keyframes: {
-            fadeIn: {
-              '0%': { opacity: '0' },
-              '100%': { opacity: '1' }
-            },
-            slideUp: {
-              '0%': { opacity: '0', transform: 'translateY(20px)' },
-              '100%': { opacity: '1', transform: 'translateY(0)' }
-            },
-            float: {
-              '0%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-6px)' },
-              '100%': { transform: 'translateY(0)' }
-            }
-          },
-          animation: {
-            'fade-in': 'fadeIn 1s ease-out forwards',
-            'slide-up': 'slideUp 700ms cubic-bezier(.16,.84,.24,1) forwards',
-            'float-slow': 'float 6s ease-in-out infinite'
-          }
-        }
-      }
-    }
-  </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    // Reveal-on-scroll using IntersectionObserver + Tailwind custom animation
+    // Reveal-on-scroll using IntersectionObserver + CSS animation classes
     document.addEventListener('DOMContentLoaded', () => {
       const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
@@ -59,31 +29,31 @@
 </head>
 <body data-theme="light">
 
-  <header class="bg-white/80 backdrop-blur-md fixed w-full top-0 left-0 z-10">
-    <div class="max-w-6xl mx-auto flex items-center justify-between p-4 md:p-6">
-      <h1 class="font-semibold tracking-tight">Anna Kyryliyk</h1>
-      <nav class="flex items-center gap-4">
-      <a href="#about" data-i18n="about">Sobre</a>
-      <a href="#portfolio" data-i18n="portfolio">Portfólio</a>
-      <a href="#contact" data-i18n="contact">Contato</a>
+  <header>
+    <div class="container">
+      <h1 class="site-title">Anna Kyryliyk</h1>
+      <nav class="main-nav">
+        <a href="#about" data-i18n="about">Sobre</a>
+        <a href="#portfolio" data-i18n="portfolio">Portfólio</a>
+        <a href="#contact" data-i18n="contact">Contato</a>
 
-      <div class="lang-switch flex items-center gap-2">
-        <img src="https://flagcdn.com/w20/pt.png" alt="Português" onclick="changeLang('pt')">
-        <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="changeLang('en')">
-        <img src="https://flagcdn.com/w20/ua.png" alt="Українська" onclick="changeLang('ua')">
-      </div>
+        <div class="lang-switch">
+          <img src="https://flagcdn.com/w20/pt.png" alt="Português" onclick="changeLang('pt')">
+          <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="changeLang('en')">
+          <img src="https://flagcdn.com/w20/ua.png" alt="Українська" onclick="changeLang('ua')">
+        </div>
 
-      <span class="theme-toggle ml-3 text-xl text-amber-600 cursor-pointer" onclick="toggleTheme()">🌓</span>
+        <span class="theme-toggle" onclick="toggleTheme()">🌓</span>
       </nav>
     </div>
   </header>
 
   <div class="hero">
-    <h2 data-i18n="hero" class="animate-fade-in text-3xl md:text-4xl lg:text-5xl leading-tight text-center max-w-4xl mx-auto">“Design que fala com o coração, transforma espaços e inspira vidas.”</h2>
+    <h2 data-i18n="hero" class="hero-title">“Design que fala com o coração, transforma espaços e inspira vidas.”</h2>
   </div>
 
   <section id="about" class="about">
-    <img src="images/perfil.jpg" alt="Anna Kyryliyk Portrait" class="w-72 rounded-xl shadow-lg reveal" loading="lazy">
+    <img src="images/perfil.jpg" alt="Anna Kyryliyk Portrait" class="reveal profile-img" loading="lazy">
     <div class="about-text reveal">
       <h3 data-i18n="aboutTitle">Sobre Anna</h3>
       <p data-i18n="aboutText">
@@ -98,10 +68,10 @@
   <section id="portfolio">
     <h2 data-i18n="portfolio">Portfólio</h2>
     <div class="gallery">
-      <img class="transition-transform duration-300 hover:scale-105 hover:shadow-2xl reveal" src="images/Kitchen concept.jpg" alt="Living room design">
-      <img class="transition-transform duration-300 hover:scale-105 hover:shadow-2xl reveal" src="images/Kitchen concept.jpg" alt="Kitchen concept">
-      <img class="transition-transform duration-300 hover:scale-105 hover:shadow-2xl reveal" src="images/Minimal bedroom.jpg" alt="Minimal bedroom">
-      <img class="transition-transform duration-300 hover:scale-105 hover:shadow-2xl reveal" src="images/Office design.jpg" alt="Office design">
+      <img class="reveal gallery-img" src="images/Living room design.jpg" alt="Living room design">
+      <img class="reveal gallery-img" src="images/Kitchen concept.jpg" alt="Kitchen concept">
+      <img class="reveal gallery-img" src="images/Minimal bedroom.jpg" alt="Minimal bedroom">
+      <img class="reveal gallery-img" src="images/Office design.jpg" alt="Office design">
     </div>
   </section>
 
@@ -111,7 +81,7 @@
   </div>
 
   <footer id="contact">
-    <p>📩 <strong data-i18n="contact">Contato:</strong> <a href="mailto:anna.kuruliyk.design@gmail.com">anna.kuruliyk.design@gmail.com</a></p>
+    <p>📩 <strong data-i18n="contact">Contato:</strong> <a href="mailto:EMAIL_AQUI@gmail.com">anna.kuruliyk.design@gmail.com</a></p>
     <p>🌍 <a href="https://www.linkedin.com/in/anna-kyryliuk-27251238a/">LinkedIn</a></p>
     <p>© 2025 Anna Kyryliuk</p>
   </footer>
