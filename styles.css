@@ -22,25 +22,12 @@ body {
 }
 
 /* ===== Animations (replaces Tailwind animations) ===== */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
 @keyframes slideUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-  100% { transform: translateY(0); }
-}
-
-.animate-fade-in { animation: fadeIn 1s ease-out forwards; }
 .animate-slide-up { animation: slideUp 700ms cubic-bezier(.16,.84,.24,1) forwards; }
-.animate-float-slow { animation: float 6s ease-in-out infinite; }
 .opacity-0 { opacity: 0; }
 
 header {
@@ -146,7 +133,8 @@ section {
   gap: 2.5rem;
 }
 
-.about img {
+.about img,
+.profile-img {
   height: 300px;
   width: 300px;
   object-fit: cover;
@@ -154,7 +142,7 @@ section {
   box-shadow: 3px 4px 10px rgba(187, 181, 181, 0.1);
 }
 
-/* .profile-img helper removed (styles applied via .about img) */
+/* .profile-img: alias para uso direto no HTML quando preferido */
 
 .about-text {
   flex: 1;
